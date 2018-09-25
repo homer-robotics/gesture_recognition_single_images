@@ -8,6 +8,7 @@ data_file_config:
   classification_report: /training_result/classification_report.txt
   persist_models_dir: /training_result/
   header: ['image', 'waving_right_hand', 'waving_left_hand', 'pointing_right_hand', 'pointing_left_hand', 'stop']
+  feature_number: 120
 
 
 model_tuning_parameters:

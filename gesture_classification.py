@@ -2,11 +2,8 @@ import cv2
 import numpy as np
 from numpy import linalg as la
 import argparse
-# import csv
-# import glob
 from time import time
-# import operator
-from utility import load_configuration_from_file, store_model, save_report
+from utility import load_configuration_from_file, store_model, save_report, print_prediction_result
 from collections import Counter
 
 from sklearn import cross_validation
@@ -31,7 +28,7 @@ parser.add_argument('--train', help='Start training the models if this argument 
 parser.add_argument('--pred', help='Run prediction if the argument is set to true')
 parser.add_argument('--features', default='sample_features.npz', help='Openpose features stored in numpy format')
 parser.add_argument('--image', default='sample_image.png', help='Input image')
-parser.add_argument('--model', default='adaboost.pkl',  help='Specify path to the model used for prediction')
+parser.add_argument('--model', default='random_forest.pkl',  help='Specify path to the model used for prediction')
 parser.add_argument('--pretrained', default='true',  help='Use pretrained models for prediction')
 
 args = parser.parse_args()
@@ -46,7 +43,7 @@ path_to_tr_data = None
 header = None
 model_config = None
 persist_models_dir = None
-
+feature_number = 120
 
 
 def init():
@@ -58,6 +55,7 @@ def init():
 	classification_report = HOMEDIR + config['data_file_config']['classification_report']
 	persist_models_dir = HOMEDIR + config['data_file_config']['persist_models_dir']
 	header = config['data_file_config']['header']
+	feature_number = config['data_file_config']['feature_number']
 
 
 def preapere_data_for_training():
@@ -172,11 +170,11 @@ def load_model_and_predict():
 	else:
 		model = HOMEDIR + persist_models_dir + args.model
 	clf = joblib.load(model)
+	
 	features = np.load(args.features)['features']
+	assert features.reshape(1, -1).shape[1] == feature_number, 'Expected 120 features'
 	result = clf.predict_proba(features.reshape(1, -1))
-	
-	assert features.reshape(1, -1).shape[1] > 0, 'Expected 120 features'
-	
+	print_prediction_result(result[0], header[1:])
 	mat = cv2.imread(args.image)
 	text_as_str = []
 	text_as_str.append('waving_right:{0:.4g}'.format(result[0][0]))

@@ -67,13 +67,9 @@ def translate_begin_of_coordinate(data, path_to_csv):
     np.savetxt(path_to_csv, data_new, delimiter=';', fmt='%1.6f') 
 
 
-
-
 def store_model(path, model):
     modelname =  path +  '.pkl'
     joblib.dump(model, modelname)
-
-
 
 
 def save_report(path, classifier_name, report):
@@ -82,3 +78,7 @@ def save_report(path, classifier_name, report):
         report_file.write('\n')
         report_file.write(report)
 
+def print_prediction_result(result=[], classes=[]):
+    assert len(classes)==len(result)
+    for (conf, cl) in zip(result, classes):
+        print(cl+': {0:.4g}'.format(conf))
