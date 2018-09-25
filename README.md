@@ -4,4 +4,11 @@
 
 ## Usage
 
+### Load pre-trained models
+`./load_models.sh`
+
+
+### Predict gesture using trained-models
+
+### Train your own models
 `python ....`
