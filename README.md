@@ -29,3 +29,11 @@ For training your own model, run
 
 `python gesture_classification.py --train=true`
 You can change path to training data in ./config/training_data_description.yaml by modifying `path_to_trainig_data` paramter. Note, we expect numerical labels for classes in training dataset.  
+
+## Cite
+
+If you use this work please cite us as follows:
+
+```
+TODO: insert bibtex once published
+```
