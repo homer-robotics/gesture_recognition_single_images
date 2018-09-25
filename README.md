@@ -15,12 +15,17 @@ homer_gestrec classifies five basic gesture types using [OpenPose](https://githu
 ## Usage
 
 ### Load pre-trained models
-Load pre-trained models
-`./load_models.sh`
+Run the script for loading the  pre-trained models: 
+
+`sh load_models.sh`
 
 
 ### Predict gesture using trained-models
+`python gesture_classification.py --pred=true --pretrained=true --model=random_forest.pkl`
 
 
 ### Train your own models
-`python ....`
+For training your own model, run 
+
+`python gesture_classification.py --train=true`
+You can change path to training data in ./config/training_data_description.yaml by modifying `path_to_trainig_data` paramter. Note, we expect numerical labels for classes in training dataset.  
