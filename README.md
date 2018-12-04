@@ -12,6 +12,11 @@ homer_gestrec classifies five basic gesture types using [OpenPose](https://githu
 
 ![example image](./sample_classified.png)
 
+## Requirements
+
+* pip install scikit-learn==0.19.0 (version 0.19.0 is important because newer versions don't contain cross_validation anymore)
+* pip install imblearn
+
 ## Usage
 
 ### Load pre-trained models
@@ -21,6 +26,9 @@ Run the script for loading the  pre-trained models:
 
 
 ### Predict gesture using trained-models
+
+* Note the sample_features.npz must containt the extracted pose features as of now
+
 `python gesture_classification.py --pred=true --pretrained=true --model=random_forest.pkl`
 
 
