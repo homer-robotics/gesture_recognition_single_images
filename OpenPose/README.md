@@ -4,5 +4,6 @@ This is essentially a slightly modified version of OpenPose as described in [thi
 
 ### Running it:
 * You need OpenCV version **3.4.1** or newer. I tested it with version 3.4.3.
-* You can use the COCO or MPI model for the pose extraction, the models are not included here due to their size. Therefore you need to run ```getModels.sh``` first. 
-
+* You can use the **COCO** model or the **MPI** model for the pose extraction, the models are not included here due to their size. Therefore you need to run ```getModels.sh``` first. 
+(NOTE: For some reason, it didn't download all the necessary files for me sometimes. I had to manually download ```pose_deploy_linevec_faster_4_stages.prototxt``` from [HERE](pose_deploy_linevec_faster_4_stages.prototxt) and add it to ```/pose/mpi```.)
+* The script currently has no parameters, simply run ```python OpenPoseImage.py```. Switching between MPI and COCO and loading a different image has to be changed in the code of ```OpenPoseImage.py```.
