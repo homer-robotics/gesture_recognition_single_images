@@ -84,6 +84,7 @@ for pair in POSE_PAIRS:
         cv2.putText(frame, str(np.subtract(points[partA],points[1])), points[partA], font, 0.35, (0,0,0), 2, cv2.LINE_AA)
         cv2.putText(frame, str(np.subtract(points[partA],points[1])), points[partA], font, 0.35, (0,255,0), 1, cv2.LINE_AA)
 
+print('Raw points (without normalization to neck being the origin):')
 print(points)
 cv2.imshow('Output-Keypoints', frameCopy)
 cv2.imshow('Output-Skeleton', frame)
