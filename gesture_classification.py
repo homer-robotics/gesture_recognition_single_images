@@ -6,7 +6,7 @@ from time import time
 from utility import load_configuration_from_file, store_model, save_report, print_prediction_result
 from collections import Counter
 
-from sklearn import cross_validation
+from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -77,7 +77,7 @@ def preapere_data_for_training():
 def search_best_param_for_model(name, classifier, tuning_parameters, observations, targets, _test_size=0.3, _random_state=0, save_report = True):
 
 	if tuning_parameters != None and len(tuning_parameters) > 0:
-		X_train, X_test, y_train, y_test = cross_validation.train_test_split(observations, targets, test_size=_test_size, random_state=_random_state)
+		X_train, X_test, y_train, y_test = train_test_split(observations, targets, test_size=_test_size, random_state=_random_state)
 		estimator_to_score = {}
 		scores = ['precision_macro', 'recall_macro', 'accuracy']
 		
@@ -120,7 +120,7 @@ def adjust_adaboost_param(tuning_param):
 
 
 def train_and_store_models(X, y, classifier, name, persist_model = True, store_report = True):
-	X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.25, random_state=0)
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
 	print (' ---- Training using %s --- ' % name)
 	cls = classifier
  
