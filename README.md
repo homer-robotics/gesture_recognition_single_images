@@ -14,7 +14,7 @@ homer_gestrec classifies five basic gesture types using [OpenPose](https://githu
 
 ## Requirements
 
-* `pip install scikit-learn==0.19.0` (version 0.19.0 is important because newer versions don't contain cross_validation anymore)
+* `pip install scikit-learn==0.20.0`
 * `pip install imblearn`
 
 ## Usage
