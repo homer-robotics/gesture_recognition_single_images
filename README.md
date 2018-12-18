@@ -43,5 +43,12 @@ You can change path to training data in ./config/training_data_description.yaml 
 If you use this work please cite us as follows:
 
 ```
-TODO: insert bibtex once published
+@inproceedings{memmesheimer2018gesture,
+  title={Gesture Recognition On Human Pose Features Of Single Images},
+  author={Memmesheimer, Raphael and Mykhalchyshyna, Ivanna and Paulus, Dietrich},
+  booktitle={Intelligent Systems (IS), 2018 9th International Conference on},
+  pages={1--7},
+  year={2018},
+  organization={IEEE}
+}
 ```
